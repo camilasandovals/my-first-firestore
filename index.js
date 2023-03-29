@@ -47,3 +47,10 @@ db.collection('products').get()
         console.table(productList)
     })
     .catch(console.log)
+
+//How to delete a document from Firestore:
+db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').delete()
+    .then(doc => {
+        console.log(doc.data());
+    })
+    .catch(err => console.log(err))
