@@ -34,9 +34,16 @@ const candy2 = {
 //How to read a document from Firestore:
 db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').get()
     .then(doc => {
-        console.log(doc.data())
+        console.log(doc.data());
     })
     .catch(err => console.log(err))
     //.catch(console.log)  the above line does the same
 
 
+//How to get a whole collection:
+db.collection('products').get()
+    .then(collection => {
+        const productList = collection.docs.map(doc=> doc.data());
+        console.log(productList)
+    })
+    .catch(console.log)
