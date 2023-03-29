@@ -44,6 +44,6 @@ db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').get()
 db.collection('products').get()
     .then(collection => {
         const productList = collection.docs.map(doc=> doc.data());
-        console.log(productList)
+        console.table(productList)
     })
     .catch(console.log)
