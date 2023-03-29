@@ -24,11 +24,11 @@ const candy2 = {
 }
 
 //How to add a document to firestore
-// db.collection('products').add(candy2)
-//     .then((doc) => {
-//         console.log("added doc: " + doc.id)
-//     })
-//     .catch(err => console.log(err))
+ db.collection('products').add(candy2)
+     .then((doc) => {
+         console.log("added doc: " + doc.id)
+     })
+     .catch(err => console.log(err))
 
 
 //How to read a document from Firestore:
@@ -48,9 +48,25 @@ db.collection('products').get()
     })
     .catch(console.log)
 
+//How we really get to get a whole collection:
+db.collection('products').get()
+    .then(collection => {
+        const productList = collection.docs.map(doc=> ({...doc.data(), id: doc.id}));
+        console.table(productList)
+    })
+    .catch(console.log)
+
+//How to update a document in Firestore:
+db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').update({
+    inventory: 555,
+    customerFavorite: true //if the property does not exist 
+})
+
 //How to delete a document from Firestore:
 db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').delete()
     .then(doc => {
         console.log(doc.data());
     })
     .catch(err => console.log(err))
+
+
