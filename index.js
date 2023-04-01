@@ -70,3 +70,8 @@ db.collection('products').doc('fGAuwNTN2IpcDBISTVYa').delete()
     .catch(err => console.log(err))
 
 
+//We can rewrite using async:
+const collection = await db.collection('products').get()
+    .catch(console.log);
+const productList = collection.docs.map(doc => ({...doc.data(), id:doc.id}));
+console.log(productList);
