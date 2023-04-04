@@ -11,7 +11,7 @@ initializeApp({
 });
 
 //  connect to firestore database
-const db = getFirestore();
+export const db = getFirestore();
 
 //  add a product to our products collection
 const candy2 = {
