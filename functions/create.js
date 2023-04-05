@@ -1,4 +1,4 @@
-import { db } from "./index.js"
+import { db } from "../dbConnect.js"
 
 const candy3 = {
     name: "Chocorramo",
@@ -9,7 +9,7 @@ const candy3 = {
     productNumber: 3
 }
 
-db.collection('products').add(candy2)
+db.collection('products').add(candy3)
      .then((doc) => {
          console.log("added doc: " + doc.id)
      })
